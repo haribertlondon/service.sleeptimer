@@ -72,8 +72,8 @@ def get_kodi_time():
     time_string = str(hour).zfill(2) + str(minute)
     return int(time_string)
 
-def should_i_supervise(kodi_time, supervise_start_time, supervise_end_time, debug):
-    if selfAddon.getSetting('supervision_mode') == '0' or debug == 'true':
+def should_i_supervise(kodi_time, supervise_start_time, supervise_end_time, supervision_mode, debug):
+    if supervision_mode == '0' or debug == 'true':
         return True
     else:
         if supervise_start_time == 0 and supervise_end_time == 0:
@@ -194,6 +194,9 @@ def reload_settings():
         'custom_cmd': selfAddon.getSetting('custom_cmd'),
         'cmd': selfAddon.getSetting('cmd'),
         'useAlternativeMode': selfAddon.getSetting('alternativemode'),
+        'supervision_mode': selfAddon.getSetting('supervision_mode'),
+        'hour_start_sup': selfAddon.getSetting('hour_start_sup'),
+        'hour_end_sup': selfAddon.getSetting('hour_end_sup'),
     }
     return settings
 
@@ -225,17 +228,20 @@ class service:
             custom_cmd = s['custom_cmd']
             cmd = s['cmd']
             useAlternativeMode = s['useAlternativeMode']
+            supervision_mode = s['supervision_mode']
+            hour_start_sup = s['hour_start_sup']
+            hour_end_sup = s['hour_end_sup']
 
             kodi_time = get_kodi_time()
             try:
-                supervise_start_time = int(selfAddon.getSetting('hour_start_sup').split(':')[0]+selfAddon.getSetting('hour_start_sup').split(':')[1])
-            except ValueError:
+                supervise_start_time = int(hour_start_sup.split(':')[0] + hour_start_sup.split(':')[1])
+            except (ValueError, IndexError):
                 supervise_start_time = 0
             try:
-                supervise_end_time = int(selfAddon.getSetting('hour_end_sup').split(':')[0]+selfAddon.getSetting('hour_end_sup').split(':')[1])
-            except ValueError:
+                supervise_end_time = int(hour_end_sup.split(':')[0] + hour_end_sup.split(':')[1])
+            except (ValueError, IndexError):
                 supervise_end_time = 0
-            proceed = should_i_supervise(kodi_time, supervise_start_time, supervise_end_time, debug)
+            proceed = should_i_supervise(kodi_time, supervise_start_time, supervise_end_time, supervision_mode, debug)
 
             # Set iCheckTime from settings (may be overridden below if dialog is cancelled)
             iCheckTime = check_time
