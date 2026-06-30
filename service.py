@@ -437,12 +437,19 @@ class service:
                             if custom_cmd == 'true':
                                 _debug ( "Running custom script", debug )
                                 os.system(cmd)
+
+                            # Reset state so the next playback session starts clean
+                            next_check = False
+                            diff_between_idle_and_check_time = None
                     else:
                         _debug ( "Playing the stream, time does not exceed max limit", debug )
                 else:
                     _debug ( "Not playing any media file", debug )
                     # reset max_time_in_minutes
                     max_time_in_minutes = -1
+                    # Reset state so the next playback session starts clean
+                    next_check = False
+                    diff_between_idle_and_check_time = None
 
                 diff_between_idle_and_check_time = idle_time_in_minutes - iCheckTime
 
