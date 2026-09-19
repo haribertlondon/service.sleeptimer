@@ -137,3 +137,19 @@ msgstr ""
 msgctxt "#30030"
 msgid "Alternative mode (user interaction is detected differently)"
 msgstr ""
+
+msgctxt "#30031"
+msgid "Enable PageUp key trigger (runs custom cmd + resets idle)"
+msgstr ""
+
+msgctxt "#30032"
+msgid "PageUp key trigger installed"
+msgstr ""
+
+msgctxt "#30033"
+msgid "Custom cmd idle delay (seconds, 0=disabled)"
+msgstr ""
+
+msgctxt "#30034"
+msgid "Run custom cmd after this idle time, independent of playback"
+msgstr ""
