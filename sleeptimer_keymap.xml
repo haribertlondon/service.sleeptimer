@@ -1,8 +1,0 @@
-<keymap>
-  <global>
-    <keyboard>
-      <!-- PageUp triggers the Sleep Timer custom script and resets the idle timer -->
-      <pageup>RunScript(special://home/addons/service.sleeptimer/trigger_key.py)</pageup>
-    </keyboard>
-  </global>
-</keymap>

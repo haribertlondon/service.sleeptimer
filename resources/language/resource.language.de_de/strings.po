@@ -1,0 +1,192 @@
+# Kodi Media Center language file
+# Addon Name: Sleep Timer
+# Addon id: service.sleeptimer
+msgid ""
+msgstr ""
+"Project-Id-Version: service.sleeptimer\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#32001"
+msgid "Timers"
+msgstr "Timer"
+
+msgctxt "#32002"
+msgid "Sleep time, early TV power-off and volume fade-out"
+msgstr "Einschlafzeit, vorzeitiges TV-Aus und Lautstaerke-Ausblendung"
+
+msgctxt "#32003"
+msgid "Sleep time"
+msgstr "Einschlafzeit"
+
+msgctxt "#32004"
+msgid "Volume fade-out"
+msgstr "Lautstaerke-Ausblendung"
+
+msgctxt "#32005"
+msgid "TV commands"
+msgstr "TV-Befehle"
+
+msgctxt "#32006"
+msgid "Commands used to switch the TV off and on"
+msgstr "Befehle zum Aus- und Einschalten des Fernsehers"
+
+msgctxt "#32007"
+msgid "Advanced"
+msgstr "Erweitert"
+
+msgctxt "#32008"
+msgid "Timing details and troubleshooting"
+msgstr "Zeitdetails und Fehlersuche"
+
+msgctxt "#32010"
+msgid "Enable sleep timer"
+msgstr "Sleeptimer aktivieren"
+
+msgctxt "#32011"
+msgid "When disabled the service stays loaded but never intervenes."
+msgstr "Deaktiviert bleibt der Dienst geladen, greift aber nie ein."
+
+msgctxt "#32012"
+msgid "Sleep after"
+msgstr "Einschlafen nach"
+
+msgctxt "#32013"
+msgid "Total time from the start of playback until the volume fade-out begins. Any user interaction restarts this timer."
+msgstr "Gesamtzeit ab Wiedergabestart bis zum Beginn der Ausblendung. Jede Benutzeraktion startet den Timer neu."
+
+msgctxt "#32014"
+msgid "{0:d} min"
+msgstr "{0:d} Min"
+
+msgctxt "#32015"
+msgid "Switch TV off after"
+msgstr "TV ausschalten nach"
+
+msgctxt "#32016"
+msgid "Switches the TV off while audio keeps playing. 0 disables this stage, in which case the TV goes off together with playback. Values equal to or above the sleep time are also treated as disabled."
+msgstr "Schaltet den Fernseher aus, waehrend der Ton weiterlaeuft. 0 deaktiviert diese Stufe, dann geht der Fernseher gemeinsam mit der Wiedergabe aus. Werte ab der Einschlafzeit gelten ebenfalls als deaktiviert."
+
+msgctxt "#32017"
+msgid "{0:d} min (0 = off)"
+msgstr "{0:d} Min (0 = aus)"
+
+msgctxt "#32020"
+msgid "Volume reduction per step"
+msgstr "Reduktion pro Schritt"
+
+msgctxt "#32021"
+msgid "Percentage points subtracted from the Kodi volume on every step."
+msgstr "Prozentpunkte, die pro Schritt von der Kodi-Lautstaerke abgezogen werden."
+
+msgctxt "#32022"
+msgid "{0:d} %"
+msgstr "{0:d} %"
+
+msgctxt "#32023"
+msgid "Step interval"
+msgstr "Schrittabstand"
+
+msgctxt "#32024"
+msgid "Time between two volume reduction steps."
+msgstr "Zeit zwischen zwei Reduktionsschritten."
+
+msgctxt "#32025"
+msgid "{0:d} s"
+msgstr "{0:d} s"
+
+msgctxt "#32026"
+msgid "Notify when fade-out starts"
+msgstr "Hinweis beim Start der Ausblendung"
+
+msgctxt "#32027"
+msgid "Shows an on-screen message so the fade-out can be cancelled even when the TV is already off."
+msgstr "Zeigt eine Meldung, damit die Ausblendung auch bei ausgeschaltetem Fernseher abgebrochen werden kann."
+
+msgctxt "#32030"
+msgid "TV off command"
+msgstr "TV-Aus-Befehl"
+
+msgctxt "#32031"
+msgid "Command that switches the TV off, e.g. an IR blaster call. Treated as a toggle and therefore never sent twice."
+msgstr "Befehl zum Ausschalten des Fernsehers, z. B. ein IR-Aufruf. Gilt als Umschalter und wird daher nie zweimal gesendet."
+
+msgctxt "#32032"
+msgid "TV on command"
+msgstr "TV-Ein-Befehl"
+
+msgctxt "#32033"
+msgid "Command that switches the TV on. Leave empty to use CEC (CECActivateSource)."
+msgstr "Befehl zum Einschalten des Fernsehers. Leer lassen, um CEC zu verwenden."
+
+msgctxt "#32034"
+msgid "Command type"
+msgstr "Befehlsart"
+
+msgctxt "#32035"
+msgid "Run the commands as a Kodi builtin or as a shell command."
+msgstr "Befehle als Kodi-Builtin oder als Shell-Befehl ausfuehren."
+
+msgctxt "#32036"
+msgid "Kodi builtin"
+msgstr "Kodi-Builtin"
+
+msgctxt "#32037"
+msgid "Shell command"
+msgstr "Shell-Befehl"
+
+msgctxt "#32040"
+msgid "Playback stop grace period"
+msgstr "Karenzzeit nach Wiedergabeende"
+
+msgctxt "#32041"
+msgid "How long playback may be absent before the session is considered over."
+msgstr "Wie lange keine Wiedergabe laufen darf, bevor die Sitzung als beendet gilt."
+
+msgctxt "#32042"
+msgid "Delay before restoring the volume"
+msgstr "Verzoegerung vor Lautstaerke-Wiederherstellung"
+
+msgctxt "#32043"
+msgid "Waiting time after stopping playback, so that restoring the volume stays silent."
+msgstr "Wartezeit nach dem Stoppen, damit das Zuruecksetzen der Lautstaerke lautlos bleibt."
+
+msgctxt "#32044"
+msgid "Idle time activity threshold"
+msgstr "Schwelle fuer Idle-Erkennung"
+
+msgctxt "#32045"
+msgid "Reserved for the fallback activity detection via the global idle timer."
+msgstr "Reserviert fuer die Ersatzerkennung ueber den globalen Idle-Timer."
+
+msgctxt "#32046"
+msgid "React to"
+msgstr "Reagieren auf"
+
+msgctxt "#32047"
+msgid "Whether only video playback or any playback starts a session."
+msgstr "Ob nur Videowiedergabe oder jede Wiedergabe eine Sitzung startet."
+
+msgctxt "#32048"
+msgid "Video only"
+msgstr "Nur Video"
+
+msgctxt "#32049"
+msgid "Any playback"
+msgstr "Jede Wiedergabe"
+
+msgctxt "#32050"
+msgid "Verbose logging"
+msgstr "Ausfuehrliche Protokollierung"
+
+msgctxt "#32051"
+msgid "Writes every state change to the Kodi log at info level."
+msgstr "Schreibt jeden Zustandswechsel ins Kodi-Log."
+
+msgctxt "#32100"
+msgid "Sleeping in %d s - press any key to cancel"
+msgstr "Abschalten in %d s - Taste druecken zum Abbrechen"
