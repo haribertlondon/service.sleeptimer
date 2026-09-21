@@ -80,20 +80,6 @@
 
     <category id="tv" label="32005" help="32006">
       <group id="1" label="32005">
-        <setting id="tv_off_command" type="string" label="32030" help="32031">
-          <level>0</level>
-          <default></default>
-          <control type="edit" format="string">
-            <heading>32030</heading>
-          </control>
-        </setting>
-        <setting id="tv_on_command" type="string" label="32032" help="32033">
-          <level>0</level>
-          <default></default>
-          <control type="edit" format="string">
-            <heading>32032</heading>
-          </control>
-        </setting>
         <setting id="tv_command_mode" type="string" label="32034" help="32035">
           <level>1</level>
           <default>builtin</default>
@@ -104,6 +90,32 @@
             </options>
           </constraints>
           <control type="list" format="string"/>
+        </setting>
+        <setting id="tv_off_command" type="string" label="32030" help="32031">
+          <level>1</level>
+          <default/>
+          <constraints>
+            <allowempty>true</allowempty>
+          </constraints>
+          <dependencies>
+            <dependency type="enable" setting="tv_command_mode" operator="is">shell</dependency>
+          </dependencies>
+          <control type="edit" format="string">
+            <heading>32030</heading>
+          </control>
+        </setting>
+        <setting id="tv_on_command" type="string" label="32032" help="32033">
+          <level>1</level>
+          <default/>
+          <constraints>
+            <allowempty>true</allowempty>
+          </constraints>
+          <dependencies>
+            <dependency type="enable" setting="tv_command_mode" operator="is">shell</dependency>
+          </dependencies>
+          <control type="edit" format="string">
+            <heading>32032</heading>
+          </control>
         </setting>
       </group>
     </category>
