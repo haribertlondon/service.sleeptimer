@@ -129,6 +129,12 @@ Shell command mode:
 irsend SEND_ONCE samsung KEY_POWER
 ```
 
+or for Raspi4+LibreElec
+
+```
+while ! cec-ctl -S | grep -q &quot;Standby&quot;; do ir-ctl -S nec:0x408 -d /dev/lirc0; sleep 30; done
+```
+
 ### Advanced
 | Setting | Default |
 |---|---|
