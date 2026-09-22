@@ -33,6 +33,18 @@ class Settings(object):
 
     def _get(self):
         a = xbmcaddon.Addon(ADDON_ID)          # re-read: picks up live changes
+        
+        # Read TV command settings with fallback for dependency issues
+        try:
+            tv_off_cmd = a.getSettingString("tv_off_command").strip()
+        except Exception:
+            tv_off_cmd = ""
+        
+        try:
+            tv_on_cmd = a.getSettingString("tv_on_command").strip()
+        except Exception:
+            tv_on_cmd = ""
+        
         return sm.Config(
             enabled=a.getSettingBool("enabled"),
             movie_sleep_timer=a.getSettingInt("movie_sleep_timer") * 60,
@@ -40,8 +52,8 @@ class Settings(object):
             volume_reduction_percent=a.getSettingInt("volume_reduction_percent"),
             volume_reduction_interval=a.getSettingInt("volume_reduction_interval"),
             notify_on_ramp=a.getSettingBool("notify_on_ramp"),
-            tv_off_command=a.getSettingString("tv_off_command").strip(),
-            tv_on_command=a.getSettingString("tv_on_command").strip(),
+            tv_off_command=tv_off_cmd,
+            tv_on_command=tv_on_cmd,
             stop_grace_period=a.getSettingInt("stop_grace_period"),
             volume_restore_delay=a.getSettingInt("volume_restore_delay"),
         )
@@ -128,12 +140,18 @@ class KodiIO(object):
         mode = self._s.raw_string("tv_command_mode", "builtin")
         try:
             if mode == "shell":
-                subprocess.Popen(
-                    command,
-                    shell=True,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                )
+                try:
+                    # Use explicit file descriptors for better compatibility
+                    subprocess.Popen(
+                        command,
+                        shell=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        close_fds=True,
+                    )
+                except AttributeError:
+                    # Fallback if DEVNULL/PIPE not available
+                    subprocess.Popen(command, shell=True)
             else:
                 xbmc.executebuiltin(command)
         except Exception as exc:
