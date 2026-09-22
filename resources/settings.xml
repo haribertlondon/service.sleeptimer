@@ -13,8 +13,8 @@
           <level>0</level>
           <default>45</default>
           <constraints>
-            <minimum>5</minimum>
-            <step>5</step>
+            <minimum>2</minimum>
+            <step>1</step>
             <maximum>180</maximum>
           </constraints>
           <dependencies>
@@ -30,7 +30,7 @@
           <default>0</default>
           <constraints>
             <minimum>0</minimum>
-            <step>5</step>
+            <step>1</step>
             <maximum>180</maximum>
           </constraints>
           <dependencies>
