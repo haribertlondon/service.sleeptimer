@@ -56,8 +56,8 @@ msgid "Sleep after"
 msgstr "Einschlafen nach"
 
 msgctxt "#32013"
-msgid "Total time from the start of playback until the volume fade-out begins. Any user interaction restarts this timer."
-msgstr "Gesamtzeit ab Wiedergabestart bis zum Beginn der Ausblendung. Jede Benutzeraktion startet den Timer neu."
+msgid "Time without user interaction until the volume fade-out begins. Pause, seek, volume changes and key presses restart this timer. Playlist advancement does not."
+msgstr "Zeit ohne Benutzerinteraktion bis zum Beginn der Ausblendung. Pause, Spulen, Lautstaerkeaenderungen und Tastendruecke starten den Timer neu, der Wechsel zum naechsten Titel nicht."
 
 msgctxt "#32014"
 msgid "{0:d} min"
@@ -74,6 +74,14 @@ msgstr "Schaltet den Fernseher aus, waehrend der Ton weiterlaeuft. 0 deaktiviert
 msgctxt "#32017"
 msgid "{0:d} min (0 = off)"
 msgstr "{0:d} Min (0 = aus)"
+
+msgctxt "#32018"
+msgid "Maximum session length"
+msgstr "Maximale Sitzungsdauer"
+
+msgctxt "#32019"
+msgid "Hard limit measured from the start of playback that cannot be extended by any interaction. Guarantees a shutdown even if something keeps resetting the sleep timer. 0 disables it."
+msgstr "Harte Obergrenze ab Wiedergabestart, die durch keine Interaktion verlaengert werden kann. Erzwingt das Abschalten, selbst wenn etwas den Einschlaftimer dauernd zurueck setzt. 0 deaktiviert sie."
 
 msgctxt "#32020"
 msgid "Volume reduction per step"
@@ -112,8 +120,8 @@ msgid "TV off command"
 msgstr "TV-Aus-Befehl"
 
 msgctxt "#32031"
-msgid "Command that switches the TV off, e.g. an IR blaster call. Treated as a toggle and therefore never sent twice."
-msgstr "Befehl zum Ausschalten des Fernsehers, z. B. ein IR-Aufruf. Gilt als Umschalter und wird daher nie zweimal gesendet."
+msgid "A SINGLE command that sends the TV power code once, e.g. 'ir-ctl -S nec:0x408 -d /dev/lirc0'. Do not put a retry loop here: the addon handles retries and can cancel them. A loop would keep toggling the TV on and off."
+msgstr "EIN EINZELNER Befehl, der den Einschaltcode genau einmal sendet, z. B. 'ir-ctl -S nec:0x408 -d /dev/lirc0'. Hier darf keine Wiederholungsschleife stehen: Wiederholungen verwaltet das Addon und kann sie abbrechen. Eine Schleife wuerde den Fernseher dauernd ein- und ausschalten."
 
 msgctxt "#32032"
 msgid "TV on command"
@@ -144,8 +152,8 @@ msgid "Playback stop grace period"
 msgstr "Karenzzeit nach Wiedergabeende"
 
 msgctxt "#32041"
-msgid "How long playback may be absent before the session is considered over."
-msgstr "Wie lange keine Wiedergabe laufen darf, bevor die Sitzung als beendet gilt."
+msgid "How long playback may be absent before the session is considered over. Must stay above the gap between two playlist items."
+msgstr "Wie lange keine Wiedergabe laufen darf, bevor die Sitzung als beendet gilt. Muss groesser sein als die Luecke zwischen zwei Playlist-Eintraegen."
 
 msgctxt "#32042"
 msgid "Delay before restoring the volume"
@@ -154,14 +162,6 @@ msgstr "Verzoegerung vor Lautstaerke-Wiederherstellung"
 msgctxt "#32043"
 msgid "Waiting time after stopping playback, so that restoring the volume stays silent."
 msgstr "Wartezeit nach dem Stoppen, damit das Zuruecksetzen der Lautstaerke lautlos bleibt."
-
-msgctxt "#32044"
-msgid "Idle time activity threshold"
-msgstr "Schwelle fuer Idle-Erkennung"
-
-msgctxt "#32045"
-msgid "Reserved for the fallback activity detection via the global idle timer."
-msgstr "Reserviert fuer die Ersatzerkennung ueber den globalen Idle-Timer."
 
 msgctxt "#32046"
 msgid "React to"
@@ -184,9 +184,58 @@ msgid "Verbose logging"
 msgstr "Ausfuehrliche Protokollierung"
 
 msgctxt "#32051"
-msgid "Writes every state change to the Kodi log at info level."
-msgstr "Schreibt jeden Zustandswechsel ins Kodi-Log."
+msgid "Writes state changes, activity decisions and a periodic countdown to the Kodi log."
+msgstr "Schreibt Zustandswechsel, Aktivitaetsentscheidungen und einen regelmaessigen Countdown ins Kodi-Log."
+
+msgctxt "#32052"
+msgid "Heartbeat interval"
+msgstr "Heartbeat-Intervall"
+
+msgctxt "#32053"
+msgid "How often the remaining time is written to the log while verbose logging is on."
+msgstr "Wie oft die Restzeit ins Log geschrieben wird, solange die ausfuehrliche Protokollierung aktiv ist."
+
+msgctxt "#32060"
+msgid "TV off verification"
+msgstr "TV-Aus-Ueberpruefung"
+
+msgctxt "#32061"
+msgid "Verify command"
+msgstr "Pruefbefehl"
+
+msgctxt "#32062"
+msgid "Optional shell command that exits with 0 when the TV is off, e.g. 'cec-ctl -S | grep -q Standby'. Only when this is set will the power code be sent more than once. Leave empty to send exactly one toggle."
+msgstr "Optionaler Shell-Befehl, der mit 0 endet, wenn der Fernseher aus ist, z. B. 'cec-ctl -S | grep -q Standby'. Nur wenn dieser gesetzt ist, wird der Einschaltcode mehrmals gesendet. Leer lassen, um genau einmal zu senden."
+
+msgctxt "#32063"
+msgid "Maximum retries"
+msgstr "Maximale Wiederholungen"
+
+msgctxt "#32064"
+msgid "How often the power code may be re-sent when verification says the TV is still on. Bounded on purpose: each send toggles the TV."
+msgstr "Wie oft der Einschaltcode erneut gesendet werden darf, wenn die Pruefung meldet, dass der Fernseher noch laeuft. Absichtlich begrenzt: jedes Senden schaltet um."
+
+msgctxt "#32065"
+msgid "{0:d} x"
+msgstr "{0:d} x"
+
+msgctxt "#32066"
+msgid "Retry interval"
+msgstr "Wiederholungsabstand"
+
+msgctxt "#32067"
+msgid "Waiting time between sending the power code and verifying the result."
+msgstr "Wartezeit zwischen dem Senden des Einschaltcodes und der Pruefung."
+
+msgctxt "#32068"
+msgid "Command timeout"
+msgstr "Befehls-Zeitlimit"
+
+msgctxt "#32069"
+msgid "A TV command that hangs longer than this is killed."
+msgstr "Ein TV-Befehl, der laenger haengt, wird beendet."
 
 msgctxt "#32100"
 msgid "Sleeping in %d s - press any key to cancel"
 msgstr "Abschalten in %d s - Taste druecken zum Abbrechen"
+

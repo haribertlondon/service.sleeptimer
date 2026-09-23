@@ -56,7 +56,7 @@ msgid "Sleep after"
 msgstr ""
 
 msgctxt "#32013"
-msgid "Total time from the start of playback until the volume fade-out begins. Any user interaction restarts this timer."
+msgid "Time without user interaction until the volume fade-out begins. Pause, seek, volume changes and key presses restart this timer. Playlist advancement does not."
 msgstr ""
 
 msgctxt "#32014"
@@ -73,6 +73,14 @@ msgstr ""
 
 msgctxt "#32017"
 msgid "{0:d} min (0 = off)"
+msgstr ""
+
+msgctxt "#32018"
+msgid "Maximum session length"
+msgstr ""
+
+msgctxt "#32019"
+msgid "Hard limit measured from the start of playback that cannot be extended by any interaction. Guarantees a shutdown even if something keeps resetting the sleep timer. 0 disables it."
 msgstr ""
 
 msgctxt "#32020"
@@ -112,7 +120,7 @@ msgid "TV off command"
 msgstr ""
 
 msgctxt "#32031"
-msgid "Command that switches the TV off, e.g. an IR blaster call. Treated as a toggle and therefore never sent twice."
+msgid "A SINGLE command that sends the TV power code once, e.g. 'ir-ctl -S nec:0x408 -d /dev/lirc0'. Do not put a retry loop here: the addon handles retries and can cancel them. A loop would keep toggling the TV on and off."
 msgstr ""
 
 msgctxt "#32032"
@@ -144,7 +152,7 @@ msgid "Playback stop grace period"
 msgstr ""
 
 msgctxt "#32041"
-msgid "How long playback may be absent before the session is considered over."
+msgid "How long playback may be absent before the session is considered over. Must stay above the gap between two playlist items."
 msgstr ""
 
 msgctxt "#32042"
@@ -153,14 +161,6 @@ msgstr ""
 
 msgctxt "#32043"
 msgid "Waiting time after stopping playback, so that restoring the volume stays silent."
-msgstr ""
-
-msgctxt "#32044"
-msgid "Idle time activity threshold"
-msgstr ""
-
-msgctxt "#32045"
-msgid "Reserved for the fallback activity detection via the global idle timer."
 msgstr ""
 
 msgctxt "#32046"
@@ -184,7 +184,55 @@ msgid "Verbose logging"
 msgstr ""
 
 msgctxt "#32051"
-msgid "Writes every state change to the Kodi log at info level."
+msgid "Writes state changes, activity decisions and a periodic countdown to the Kodi log."
+msgstr ""
+
+msgctxt "#32052"
+msgid "Heartbeat interval"
+msgstr ""
+
+msgctxt "#32053"
+msgid "How often the remaining time is written to the log while verbose logging is on."
+msgstr ""
+
+msgctxt "#32060"
+msgid "TV off verification"
+msgstr ""
+
+msgctxt "#32061"
+msgid "Verify command"
+msgstr ""
+
+msgctxt "#32062"
+msgid "Optional shell command that exits with 0 when the TV is off, e.g. 'cec-ctl -S | grep -q Standby'. Only when this is set will the power code be sent more than once. Leave empty to send exactly one toggle."
+msgstr ""
+
+msgctxt "#32063"
+msgid "Maximum retries"
+msgstr ""
+
+msgctxt "#32064"
+msgid "How often the power code may be re-sent when verification says the TV is still on. Bounded on purpose: each send toggles the TV."
+msgstr ""
+
+msgctxt "#32065"
+msgid "{0:d} x"
+msgstr ""
+
+msgctxt "#32066"
+msgid "Retry interval"
+msgstr ""
+
+msgctxt "#32067"
+msgid "Waiting time between sending the power code and verifying the result."
+msgstr ""
+
+msgctxt "#32068"
+msgid "Command timeout"
+msgstr ""
+
+msgctxt "#32069"
+msgid "A TV command that hangs longer than this is killed."
 msgstr ""
 
 msgctxt "#32100"
